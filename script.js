@@ -188,7 +188,7 @@ game();
 
 
 ////////// CLOSURES VERY IMPORTANT
-
+/*
 function retirement(retirementAge){
      var a = ' years left until retirement.'
     return function(yearOfBirth){
@@ -219,23 +219,74 @@ function interviewQuestion(job) {
 }
 interviewQuestion('teacher')('john');
 
+*/
+/////////////////////////
+///////////Video 12 BIND CALL APPLY
 
 
+var john = {
+    name: 'John',
+    age: 26,
+    job: 'teacher',
+    presentation: function(style,timeOfDay){
+        if(style==='formal'){
+            console.log('Good '+timeOfDay+' ladies and gentlemen. I\'m '+this.name+' and I\'m '+this.age+' years old');
+        }else if (style==='friendly'){
+            console.log('yo whats up everyone I\'m '+this.name+' and I\'m '+this.age+' years old.Have a Good '+timeOfDay);
+        }
+    }
+};
+var emily = {
+    name: 'Emily',
+    age: 35,
+    job: 'designer'
+};
+
+john.presentation('formal','evening');
+
+/*easy method
+emily.x = john.presentation;
+emily.x('friendly','morning'); */
+
+//call method
+john.presentation.call(emily, 'friendly','afternoon');
+
+//apply method, works for array only
+//john.presentation.apply(emily,['friendly','afternoon']);
+
+//bind method
+var johnFriendly = john.presentation.bind(john,'friendly');
+
+johnFriendly('morning');
+johnFriendly('night');
+
+var emilyFormal = john.presentation.bind(emily,'formal');
+emilyFormal('afternoon');
 
 
+//USING BIND ON SOMETHING WE DID BEFORE
 
+var years = [1990,1965,1937,2005,1997];
 
+function arrayCalc(arr, fn){
+    var arrRes = [];
+    for(var i = 0;i<years.length;i++){
+        arrRes.push(fn(arr[i]));
+    }
+    return arrRes;
+}
+function calcAge(el){
+    return 2019 - el;
+}
 
+function fullAge(limit,el){
+    return el>= limit;
+}
 
-
-
-
-
-
-
-
-
-
+var ages = arrayCalc(years,calcAge);
+var fullJapan = arrayCalc(ages,fullAge.bind(this,20));
+console.log(ages);
+console.log(fullJapan);
 
 
 
