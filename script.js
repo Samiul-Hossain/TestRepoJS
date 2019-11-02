@@ -130,6 +130,9 @@ var rates = arrayCalc(ages,maxHeartRate);
 console.log(rates);
 
 */
+/*
+
+//////////// VIDEO 9 important FUNCTIONS
 
 function interviewQuestion(job){
     if (job === 'designer'){
@@ -156,6 +159,54 @@ teacherQuestion('John');
 designerQuestion('John');
 
 interviewQuestion('teacher')('Mark');
+
+*/
+
+
+//VIDEO 10 IIFE
+/*
+function game(){
+    var score = Math.random()*10;
+    console.log(score>=5);
+}
+game();
+*/
+
+(function() {
+    var score = Math.random()*10;
+    console.log(score>=5);
+}
+)();
+
+(function(goodLuck) {
+    var score = Math.random()*10;
+    console.log(score>=5);
+}
+)();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
