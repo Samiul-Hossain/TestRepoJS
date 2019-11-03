@@ -219,7 +219,7 @@ function interviewQuestion(job) {
 }
 interviewQuestion('teacher')('john');
 
-*/
+
 /////////////////////////
 ///////////Video 12 BIND CALL APPLY
 
@@ -246,7 +246,7 @@ john.presentation('formal','evening');
 
 /*easy method
 emily.x = john.presentation;
-emily.x('friendly','morning'); */
+emily.x('friendly','morning'); 
 
 //call method
 john.presentation.call(emily, 'friendly','afternoon');
@@ -287,6 +287,67 @@ var ages = arrayCalc(years,calcAge);
 var fullJapan = arrayCalc(ages,fullAge.bind(this,20));
 console.log(ages);
 console.log(fullJapan);
+
+
+*/
+
+// CODING CHALLENGE
+
+(function(){
+    function Question(question,answer,correct){
+    this.question = question;
+    this.answer = answer;
+    this.correct = correct;
+}
+
+Question.prototype.displayQuestion=function(){
+    console.log(this.question);
+    
+    for(var i=0;i<this.answer.length; i++){
+        console.log(i+': '+this.answer[i]);
+    }
+}
+
+Question.prototype.checkAnswer = function(ans){
+    if(ans === this.correct){
+        console.log('Correct Answer');
+    }else {
+        console.log('Wrong Answer');
+    }
+}
+
+var q1 = new Question('Is JavaScript the coolest language?',['Yes','No'],0);
+var q2 = new Question('What is the instructors name?',['Michael','Jonas','John'],1);
+var q3 = new Question('What does best describe coding',['Boring','Hard','Fun','Tedious'],2);
+
+var questions = [q1,q2,q3];
+var n =Math.floor(Math.random()*questions.length);
+
+questions[n].displayQuestion();
+
+var answer = parseInt(prompt('Please select the correct answer.'));
+
+questions[n].checkAnswer(answer);
+})();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
